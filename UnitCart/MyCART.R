@@ -328,3 +328,112 @@ mean_cv_error_full
 mean_cv_error_pruned
 mean_cv_error_bagging
 mean_cv_error_rf ### so far random forest is performing well
+
+#---------------------------------------------------------------
+# AdaBoost Model
+#---------------------------------------------------------------
+
+# Fit an AdaBoost model using the adabag package
+adaboost_model <- boosting(Genotype ~ ., data = data_train)
+
+# Predict on the training data
+adaboost_pred_train <- predict(adaboost_model, data_train[, -1])$class  # Exclude 'Genotype' column
+
+# Calculate training error rate
+adaboost_train_error <- sum(adaboost_pred_train != data_train$Genotype) / nrow(data_train)
+adaboost_train_error  # Output the error rate (we are getting here 0 error rate)
+
+# View variable importance
+adaboost_model$importance
+
+# Initialize vector for cross-validation errors of AdaBoost model
+cv_errors_adaboost <- numeric(num_folds)
+
+# Cross-validation for AdaBoost model
+for (fold in 1:num_folds) {
+  print(paste("Processing fold", fold, "of", num_folds))
+  
+  # Training data excluding the current fold
+  train_cv <- data_train[fold_assignments != fold, ]
+  # Validation data for the current fold
+  validate_cv <- data_train[fold_assignments == fold, ]
+  
+  # Fit the AdaBoost model
+  adaboost_model_cv <- boosting(Genotype ~ ., data = train_cv)
+  
+  # Predict on the validation fold
+  adaboost_pred_cv <- predict(adaboost_model_cv, validate_cv[, -1])$class  # Exclude 'Genotype' column
+  
+  # Calculate error rate for the fold
+  cv_errors_adaboost[fold] <- sum(adaboost_pred_cv != validate_cv$Genotype) / nrow(validate_cv)
+}
+
+# Mean cross-validation error rate for AdaBoost model
+mean_cv_error_adaboost <- mean(cv_errors_adaboost)
+mean_cv_error_default
+mean_cv_error_full
+mean_cv_error_pruned
+mean_cv_error_bagging
+mean_cv_error_rf
+mean_cv_error_adaboost ###so far adaboost giving the best model with error rate 0.007407407
+
+#---------------------------------------------------------------
+# XGBoost Model
+#---------------------------------------------------------------
+
+# Prepare data for XGBoost
+X_train <- as.matrix(data_train[, -1])  # Exclude 'Genotype' column
+y_train <- as.integer(data_train$Genotype) - 1  # Convert factors to integers starting from 0
+
+# Fit an XGBoost model
+xgboost_model <- xgboost(data = X_train, label = y_train, max_depth = 6, eta = 0.3,
+                         nthread = 2, nrounds = 20, objective = "binary:logistic", verbose = 2)
+
+# Predict on the training data
+xgboost_pred_train <- predict(xgboost_model, X_train)
+
+# Convert probabilities to class labels
+xgboost_class_train <- ifelse(xgboost_pred_train > 0.5, "Down", "Control")
+
+# Calculate training error rate
+xgboost_train_error <- sum(xgboost_class_train != as.character(data_train$Genotype)) / nrow(data_train)
+xgboost_train_error  # Output the error rate (giving awful error rate (0.47))
+
+# Initialize vector for cross-validation errors of XGBoost model
+cv_errors_xgboost <- numeric(num_folds)
+
+# Cross-validation for XGBoost model
+for (fold in 1:num_folds) {
+  print(paste("Processing fold", fold, "of", num_folds))
+  
+  # Training data excluding the current fold
+  train_cv <- data_train[fold_assignments != fold, ]
+  X_train_cv <- as.matrix(train_cv[, -1])
+  y_train_cv <- as.integer(train_cv$Genotype) - 1
+  
+  # Validation data for the current fold
+  validate_cv <- data_train[fold_assignments == fold, ]
+  X_validate_cv <- as.matrix(validate_cv[, -1])
+  
+  # Fit the XGBoost model
+  xgboost_model_cv <- xgboost(data = X_train_cv, label = y_train_cv, max_depth = 7, eta = 0.2,
+                              subsample = 0.5, nrounds = 55, nthread = 2, objective = "binary:logistic",
+                              verbose = 0)
+  
+  # Predict on the validation fold
+  xgboost_pred_cv <- predict(xgboost_model_cv, X_validate_cv)
+  xgboost_class_cv <- ifelse(xgboost_pred_cv > 0.5, "Down", "Control")
+  
+  # Calculate error rate for the fold
+  cv_errors_xgboost[fold] <- sum(xgboost_class_cv != as.character(validate_cv$Genotype)) / nrow(validate_cv)
+}
+
+# Mean cross-validation error rate for XGBoost model
+mean_cv_error_xgboost <- mean(cv_errors_xgboost)
+mean_cv_error_default
+mean_cv_error_full
+mean_cv_error_pruned
+mean_cv_error_bagging
+mean_cv_error_rf
+mean_cv_error_adaboost ### seems to be best model
+mean_cv_error_xgboost ###cross validation also confirms horrible error rate with xgboost
