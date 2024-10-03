@@ -437,3 +437,41 @@ mean_cv_error_bagging
 mean_cv_error_rf
 mean_cv_error_adaboost ### seems to be best model
 mean_cv_error_xgboost ###cross validation also confirms horrible error rate with xgboost
+
+#---------------------------------------------------------------
+# Summary of Cross-Validation Error Rates
+#---------------------------------------------------------------
+
+# Cross-validation error rates (in percentage)
+cat("Mean CV Error Rates (%):\n")
+cat("Default CART Model:   ", mean_cv_error_default * 100, "\n")
+cat("Full CART Model:      ", mean_cv_error_full * 100, "\n")
+cat("Pruned CART Model:    ", mean_cv_error_pruned * 100, "\n")
+cat("Bagging Model:        ", mean_cv_error_bagging * 100, "\n")
+cat("Random Forest Model:  ", mean_cv_error_rf * 100, "\n")
+cat("AdaBoost Model:       ", mean_cv_error_adaboost * 100, "\n")
+cat("XGBoost Model:        ", mean_cv_error_xgboost * 100, "\n")
+
+
+#--------------------------------------------------------------------------------
+# selecting adaboost as it gives lowest cross validation error rate (0.7407407%)
+#--------------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------
+# Evaluation on Test Set
+#---------------------------------------------------------------
+
+# Predict on the test set using the best model (e.g., AdaBoost)
+adaboost_pred_test <- predict(adaboost_model, data_test[, -1])$class
+
+# Calculate test error rate
+adaboost_test_error <- sum(adaboost_pred_test != data_test$Genotype) / nrow(data_test)
+adaboost_test_error  # Output the test error rate (works well for the test data as we are getting similar type of error rate as we saw with training data)
+
+
+# Sanity check: Compare with training and cross-validation errors in percentage
+cat("AdaBoost Training data Error Rate: ", adaboost_train_error*100, "\n")
+cat("AdaBoost CV Error Rate:       ", mean_cv_error_adaboost*100, "\n")
+cat("AdaBoost Test data Error Rate:     ", adaboost_test_error*100, "\n")
+
