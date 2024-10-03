@@ -281,3 +281,50 @@ mean_cv_error_full
 mean_cv_error_pruned
 mean_cv_error_bagging ## cross validation with bagging shows, bagging reduces the error rate significantly 
 
+#---------------------------------------------------------------
+# Random Forest Model
+#---------------------------------------------------------------
+
+# Fit a Random Forest model
+random_forest_model <- randomForest(Genotype ~ ., data = data_train, ntree = 1000)
+
+# View OOB error rate and other model details
+print(random_forest_model)
+
+# Predict on the training data (already stored in the model)
+rf_pred_train <- random_forest_model$predicted
+
+# Calculate training error rate
+rf_train_error <- sum(rf_pred_train != data_train$Genotype) / nrow(data_train)
+rf_train_error  # Output the error rate
+
+# Plot error rate vs number of trees
+plot(random_forest_model)
+
+# Initialize vector for cross-validation errors of Random Forest model
+cv_errors_rf <- numeric(num_folds)
+
+# Cross-validation for Random Forest model
+for (fold in 1:num_folds) {
+  # Training data excluding the current fold
+  train_cv <- data_train[fold_assignments != fold, ]
+  # Validation data for the current fold
+  validate_cv <- data_train[fold_assignments == fold, ]
+  
+  # Fit the Random Forest model
+  rf_model_cv <- randomForest(Genotype ~ ., data = train_cv, ntree = 1000)
+  
+  # Predict on the validation fold
+  rf_pred_cv <- predict(rf_model_cv, validate_cv, type = "class")
+  
+  # Calculate error rate for the fold
+  cv_errors_rf[fold] <- sum(rf_pred_cv != validate_cv$Genotype) / nrow(validate_cv)
+}
+
+# Mean cross-validation error rate for Random Forest model
+mean_cv_error_rf <- mean(cv_errors_rf)
+mean_cv_error_default
+mean_cv_error_full
+mean_cv_error_pruned
+mean_cv_error_bagging
+mean_cv_error_rf ### so far random forest is performing well
