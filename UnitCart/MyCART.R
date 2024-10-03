@@ -181,3 +181,57 @@ mean_cv_error_default <- mean(cv_errors_default)
 mean_cv_error_default
 mean_cv_error_full <- mean(cv_errors_full)
 mean_cv_error_full ###full cart doing better even after cross validation
+
+# Plot complexity parameter (cp) for the full CART model
+plotcp(cart_model_full)
+printcp(cart_model_full)
+
+# Plot cp for the default CART model
+plotcp(cart_model_default)
+printcp(cart_model_default)
+
+#---------------------------------------------------------------
+# Pruned Decision Tree Model
+#---------------------------------------------------------------
+
+# Fit a pruned CART model with specified cp value
+# based on plotcp(cart_model_full), #36 trees can produce good result
+cart_model_pruned <- rpart(Genotype ~ ., data = data_train, method = "class",
+                           control = rpart.control(cp = 0.0012920, minsplit = 1))
+
+# Plot the pruned tree (more interpretable)
+plot(cart_model_pruned, uniform = TRUE, margin = 0.1)
+text(cart_model_pruned, use.n = TRUE, all = TRUE, cex = 0.8)
+##plot the pruned tree with rpart.plot function
+rpart.plot(cart_model_pruned)
+
+# Plot cp for the pruned tree
+plotcp(cart_model_pruned)
+
+# Initialize vector for cross-validation errors of pruned tree
+cv_errors_pruned <- numeric(num_folds)
+
+# Cross-validation for pruned CART model
+for (fold in 1:num_folds) {
+  # Training data excluding the current fold
+  train_cv <- data_train[fold_assignments != fold, ]
+  # Validation data for the current fold
+  validate_cv <- data_train[fold_assignments == fold, ]
+  
+  # Fit the pruned CART model
+  cart_pruned_model_cv <- rpart(Genotype ~ ., data = train_cv, method = "class",
+                                control = rpart.control(cp = 0.0012920, minsplit = 1))
+  
+  # Predict on the validation fold
+  cart_pruned_pred_cv <- predict(cart_pruned_model_cv, validate_cv, type = "class")
+  
+  # Calculate error rate for the fold
+  cv_errors_pruned[fold] <- sum(cart_pruned_pred_cv != validate_cv$Genotype) / nrow(validate_cv)
+}
+
+# Mean cross-validation error rate for pruned tree
+mean_cv_error_pruned <- mean(cv_errors_pruned)
+mean_cv_error_default
+mean_cv_error_full
+mean_cv_error_pruned ### full cart with 41 trees and pruned cart with 36 trees bascially giving same cross validation error rate
+
