@@ -19,5 +19,6 @@ str(data)
 data$diagnosis <- as.factor(data$diagnosis)
 
 ### saving the simplified breast cancer data
+setwd("/Volumes/Crucial_X6/BIOL701_ML/RoyMLbiol/UnitCart")
 write.csv(data, "simplified_breast_cancer_data.csv", row.names = FALSE, quote = F)
 
