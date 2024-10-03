@@ -235,3 +235,49 @@ mean_cv_error_default
 mean_cv_error_full
 mean_cv_error_pruned ### full cart with 41 trees and pruned cart with 36 trees bascially giving same cross validation error rate
 
+#---------------------------------------------------------------
+# Bagging Model
+#---------------------------------------------------------------
+
+# Fit a bagging model using ipred's bagging function
+bagging_model <- ipred::bagging(Genotype ~ ., data = data_train, nbagg = 500, coob = TRUE, method = "class",
+                                control = rpart.control(cp = 0, minsplit = 1, xval = 0))
+
+# View out-of-bag error estimate
+bagging_model$err
+
+# Predict on the training data
+bagging_pred_train <- predict(bagging_model)
+
+# Calculate training error rate
+bagging_train_error <- sum(bagging_pred_train != data_train$Genotype) / nrow(data_train)
+bagging_train_error  # Output the error rate
+
+# Initialize vector for cross-validation errors of bagging model
+cv_errors_bagging <- numeric(num_folds)
+
+# Cross-validation for bagging model
+for (fold in 1:num_folds) {
+  # Training data excluding the current fold
+  train_cv <- data_train[fold_assignments != fold, ]
+  # Validation data for the current fold
+  validate_cv <- data_train[fold_assignments == fold, ]
+  
+  # Fit the bagging model
+  bagging_model_cv <- ipred::bagging(Genotype ~ ., data = train_cv, nbagg = 500, coob = FALSE, method = "class",
+                                     control = rpart.control(cp = 0, minsplit = 1, xval = 0))
+  
+  # Predict on the validation fold
+  bagging_pred_cv <- predict(bagging_model_cv, validate_cv, type = "class")
+  
+  # Calculate error rate for the fold
+  cv_errors_bagging[fold] <- sum(bagging_pred_cv != validate_cv$Genotype) / nrow(validate_cv)
+}
+
+# Mean cross-validation error rate for bagging model
+mean_cv_error_bagging <- mean(cv_errors_bagging)
+mean_cv_error_default
+mean_cv_error_full
+mean_cv_error_pruned
+mean_cv_error_bagging ## cross validation with bagging shows, bagging reduces the error rate significantly 
+
