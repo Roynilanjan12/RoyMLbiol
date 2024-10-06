@@ -1,0 +1,26 @@
+Module: CART
+Classifying down syndrome with protein expression data
+
+In this project, the goal is to apply a Classification and Regression Tree (CART) algorithm to solve a binary classification problem. To do that, I picked a dataset for classifying whether a mouse has Down syndrome based on protein expression data. By analyzing patterns in the protein expression levels, the CART model will predict the presence or absence of Down syndrome in mice. 
+
+Here is the list of different CART models that I applied along with there cross validation error rate in percentage:
+
+Default CART Model:    14.19753%
+Full CART Model:       11.35802% 
+Pruned CART Model:     11.35802% 
+Bagging Model:         4.938272% 
+Random Forest Model:   0.9876543% 
+AdaBoost Model:        0.8641975% (Best Model) 
+XGBoost Model:         47.53086% 
+
+Details on AdaBoost as this is the best model for us:
+AdaBoost Training data Error Rate:  0% 
+AdaBoost CV Error Rate:        0.8641975% 
+AdaBoost Test data Error Rate:      0.3703704% 
+
+Based on the mean cross validation error rate AdaBoost model is working best on my mouse down syndrome dataset. If we further look into AdaBoost model, I see that test data error rate for AdaBoost also very less which is close to 0% error rate, and this is consistent with Training data Error Rate and cross validation Error Rate.  Surprisingly, XGBoost Model was the worst of all models with 47.5% cross validation error rate.
+
+
+
+
+
