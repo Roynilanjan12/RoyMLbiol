@@ -1,0 +1,19 @@
+
+Unit: Modularity
+Name: Nilanjan Roy
+
+For Temperature variable:
+
+Temperature Mean Slope: 0.01498
+Temperature Standard error of the mean: 0.00049
+The mean is positive, and the standard error of the mean is much smaller than the mean itself. So, we can say that over time the temperature has increased. See the Temperature_Slopes_Histogram.pdf file for visualization
+
+For Precipitation variable:
+Precipitation Mean Slope: 0.06954
+Precipitation Slope Standard Error: 0.00490
+Again here, the mean is positive, and the standard error of the mean is much smaller than the mean itself. So, we can say that over time the Precipitation has increased. See the Precipitation_Slopes_Histogram.pdf for visualization
+
+Slope map also confirms that the temperature and precipitation have increased over time in different states. For temperature variable we had lots of data points for most of the states (after filtering). But for precipitation variable, we had limited amount of data points, and those data points were only from 3 states (after filtering).
+
+
+
