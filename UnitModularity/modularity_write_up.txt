@@ -17,6 +17,7 @@ Slope map also confirms that the temperature and precipitation have increased ov
 
 ***I had the functions (data filtering function and getslope function) inside the main.R. That is because, i thought the functions are fairly simple and requires a specific columns such as state, name, lon, lat. So, i thought these functions are more useful for this dataset specifically. So, i had them inside the main.R.
 *** Also, i intentionally avoided .rds and .pdf files from pushing into the repo.
+*** Additionally i used a package "data.table" for optimizing the code. This script runs comparatively fast.
 
 
 
