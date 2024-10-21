@@ -1,3 +1,10 @@
+#Overall: You've done everything, your code is *very* clear and well organized,
+#and I don't see any obvious errors. Well done. 
+#Grade: S+
+
+#DAN: It would have been a good idea to have a header explaining briefly what
+#the script is for, your name, date, where the data come from, etc.
+
 # Load necessary libraries
 library(tidyverse)     # Collection of R packages for data manipulation and visualization
 library(readxl)        # To read Excel files
@@ -14,8 +21,14 @@ library(xgboost)       # Extreme gradient boosting
 # Data Loading and Preprocessing
 #---------------------------------------------------------------
 
+#DAN: Nice sectioning, make the code clearer
+
 # Load the dataset
 mouse_data <- read.csv("/Volumes/Crucial_X6/BIOL701_ML/RoyMLbiol/UnitCart/Data_Cortex_Nuclear.csv")
+#DAN: Absolute path do not work on someone else's machine when they clone your repo.
+#I prefer to just insert a comment saying to make the R working directory be the same
+#directory as the script, and then use relative paths.
+#DAN: for me: mouse_data <- read.csv("Data_Cortex_Nuclear.csv")
 
 # Preview the first few rows
 head(mouse_data)
@@ -64,6 +77,8 @@ ggplot(df_long, aes(x = value)) +
   theme_classic() +
   labs(x = "Protein Expression", y = "Count")
 
+#DAN: Good idea to explore the data a bit
+
 #---------------------------------------------------------------
 # Data Splitting for Training and Testing
 #---------------------------------------------------------------
@@ -99,6 +114,7 @@ cart_model_default <- rpart(Genotype ~ ., data = data_train, method = "class")
 
 # Plot the decision tree
 rpart.plot(cart_model_default)
+#DAN: Nice work identifying a better plotting tool that was not taught
 
 # Predict on the training data
 cart_pred_train <- predict(cart_model_default, type = "class")
@@ -136,6 +152,7 @@ num_folds <- 10
 
 # Create fold assignments
 fold_assignments <- rep(1:num_folds, length.out = nrow(data_train))
+#DAN: You generally use nice, descriptive variale name
 
 # Initialize vectors to store cross-validation errors
 cv_errors_default <- numeric(num_folds)
@@ -242,6 +259,7 @@ mean_cv_error_pruned ### full cart with 41 trees and pruned cart with 36 trees b
 # Fit a bagging model using ipred's bagging function
 bagging_model <- ipred::bagging(Genotype ~ ., data = data_train, nbagg = 500, coob = TRUE, method = "class",
                                 control = rpart.control(cp = 0, minsplit = 1, xval = 0))
+#DAN: Good idea to use ::
 
 # View out-of-bag error estimate
 bagging_model$err
