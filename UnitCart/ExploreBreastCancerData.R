@@ -1,3 +1,6 @@
+#DAN: It would have been a good idea to have a header explaining the purpose of the
+#script, etc.
+
 library(tidyverse)
 
 ###loading and inspecting the dataframe
