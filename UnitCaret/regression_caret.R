@@ -102,7 +102,8 @@ model_methods <- c("rpart",      # Decision Tree
 
 # Determine 'tuneLength' to use for each model based on the number of tuning parameters
 num_tuning_params <- sapply(as.list(model_methods), FUN = function(x) { dim(modelLookup(x))[1] })
-tune_lengths <- round(2^(1 / num_tuning_params))
+tune_lengths <- round(2^(1 / num_tuning_params)) #intentionally kept the tune lengths low
+                                                 #as it was taking huge time for this dataset for all the models
 
 # Set up training control for cross-validation
 train_control <- trainControl(method = "repeatedcv", number = 10, repeats = 3)
