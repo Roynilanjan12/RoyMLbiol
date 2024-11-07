@@ -1,3 +1,9 @@
+#DAN: Overall, this is very well document and very modular code. Great job! It even ran pretty easily. 
+#See comments for a few suggestions. 
+#Grade: S+
+
+#DAN: Nice header material
+
 # Author: Nilanjan Roy
 
 # Climate Data Analysis Script
@@ -12,6 +18,7 @@
 # MODULARITY EXAMPLE - Throughout the entire script, before writing the actual code, here I am writing a description of each chunck, describing what
 # the next couple of lines of code will do. This will separate each code chunck from each other while maintaing the 
 # task and description of each chuck
+#DAN: Nice
 
 ###MODULARITY EXAMPLE - starting of clean R enviroment to avoid dependency of other script.
 # By clearing the environment, we avoid any unintended interactions with variables or settings from previous sessions.
@@ -29,6 +36,8 @@ for (pkg in required_packages) {
     install.packages(pkg)
   }
 }
+#DAN: I usually dont script an install because then if someone runs your code they will get a package
+#installed possibly without realizing it. If, say, their disk were full this could cause problems. 
 
 library(maps)       # For plotting geographical maps
 library(data.table) # For efficient data manipulation and performance optimization
@@ -40,6 +49,7 @@ library(tidyverse) # For basic plotting
 # MODULARITY EXAMPLE - giving constants variable names.
 # Defining constants at the beginning allows for easy modification and improves code readability.
 MIN_DATA_POINTS <- 40  # Minimum number of data points required per location for analysis
+#DAN: Great
 
 # MODULARITY EXAMPLE - Lesson 2: Write extensible code.
 # If we need to change the minimum data points requirement, we can do so in one place.
@@ -53,7 +63,10 @@ MIN_DATA_POINTS <- 40  # Minimum number of data points required per location for
 # MODULARITY EXAMPLE - Resisting the temptation to just code without planning.
 # Planning the data paths and verifying their correctness is crucial.
 
-setwd("/Volumes/Crucial_X6/BIOL701_ML/RoyMLbiol/UnitModularity")
+#DAN: Very nice, explantory comments
+
+#setwd("/Volumes/Crucial_X6/BIOL701_ML/RoyMLbiol/UnitModularity")
+#DAN: This won't run on my machine
 
 # MODULARITY EXAMPLE -  Writing extensible code.
 # Defining data file paths as variables for flexibility.
@@ -64,7 +77,7 @@ precipitation_data_file <- "USAAnnualPcpn1950_2008.rds"
 # MODULARITY EXAMPLE -The file paths are defined as variables to avoid hardcoding and facilitate changes.
 
 # Check if data files exist before loading
-if (!file.exists(temperature_data_file)) {
+if (!file.exists(temperature_data_file)) { #DAN: good idea
   stop("Temperature data file not found.")
 }
 if (!file.exists(precipitation_data_file)) {
@@ -132,7 +145,8 @@ filter_locations <- function(data, min_points) {
 # 'state', 'name', 'lat', 'lon' columns.
 temperature_filtered <- filter_locations(temperature_data, MIN_DATA_POINTS)
 precipitation_filtered <- filter_locations(precipitation_data, MIN_DATA_POINTS)
-
+#DAN: Great job writing a function and calling it twice
+#DAN: very clear variable names
 
 #*** Regression Analysis ***
 
