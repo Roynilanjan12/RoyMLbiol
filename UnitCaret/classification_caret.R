@@ -1,3 +1,11 @@
+#DAN: The write up is a bit thin on the description of a new method, in particular, for 
+#classification it describes svm radial, which was covered in class.
+#You did, however, try quite a few different methods, so that's good.
+#Your code below is quite well commented and well organized, and very
+#readable. Nice work using a loop for part of the task, which required a modular
+#approach. Nice headers - that'll make this script easier for you to read if
+#you look back at it in 6 months. Grade: S+
+
 ################################################################################
 # Toxicity Classification using the caret Package
 # Biol 701: Topics In Machine Learning in Biology, University of Kansas
