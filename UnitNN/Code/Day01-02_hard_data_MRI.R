@@ -4,7 +4,7 @@
 library(tidyverse)
 
 # Install and load the keras3 package for building neural networks
-#install.packages("keras3")
+#install.packages("keras3") #DAN: Thank you for commenting the install commands
 library(keras3)
 
 # Install and load the reticulate package to interface with Python
@@ -18,6 +18,8 @@ library(jpeg)
 # Install and load the imager package for image processing
 #install.packages('imager')
 library(imager)
+
+#DAN: Nice code comments and sections and so on.
 
 # Data Preparation --------------------------------------------------------------
 
@@ -173,6 +175,13 @@ history1 <- model1 %>% fit(
   epochs = 30, batch_size = 128,
   validation_split = 0.2
 )
+
+#DAN: According to your write up, the accuracy of this model *declines* as you do more epochs,
+#both on the training and validation datasets simultaneously. Overfitting could lead to a 
+#decline in accuracy on the validation dataset, but I can't see how anything other than a 
+#bug could cause a decline on the training data. The weird thing is, the loss function is
+#simultaneously getting better. How could that be? All of that amount to a red flag, makes 
+#me suspect some sort of bug. 
 
 # View training history
 history1
