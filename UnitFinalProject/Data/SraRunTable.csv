@@ -1,0 +1,118 @@
+Run,Sample Name,sex,strain,tissue
+SRR6475687,P. rettgeri infected CrebA RNAi,male,CS,Whole fly
+SRR6475688,Unchallenged CrebA RNAi,male,CS,Whole fly
+SRR6475689,P. rettgeri infected CrebA RNAi,male,CS,Whole fly
+SRR6475690,P. rettgeri infected RNAi control,male,CS,Whole fly
+SRR6475691,Unchallenged CrebA RNAi,male,CS,Whole fly
+SRR6475692,P. rettgeri infected CrebA RNAi,male,CS,Whole fly
+SRR6475693,Unchallenged RNAi control,male,CS,Whole fly
+SRR6475694,P. rettgeri infected RNAi control,male,CS,Whole fly
+SRR6475695,Unchallenged RNAi control,male,CS,Whole fly
+SRR6475696,P. rettgeri infected RNAi control,male,CS,Whole fly
+SRR6475686,Unchallenged CrebA RNAi,male,CS,Whole fly
+SRR6475697,Unchallenged RNAi control,male,CS,Whole fly
+SRR6434013,0h Unchallenged,male,CS,Whole fly
+SRR6434014,0h Unchallenged,male,CS,Whole fly
+SRR6434015,0h Unchallenged,male,CS,Whole fly
+SRR6434351,12h Unchallenged,male,CS,Whole fly
+SRR6434352,12h Unchallenged,male,CS,Whole fly
+SRR6434353,12h Unchallenged,male,CS,Whole fly
+SRR6434354,132h Unchallenged,male,CS,Whole fly
+SRR6434355,36h Unchallenged,male,CS,Whole fly
+SRR6434356,132h Unchallenged,male,CS,Whole fly
+SRR6434357,36h Unchallenged,male,CS,Whole fly
+SRR6434358,36h Unchallenged,male,CS,Whole fly
+SRR6434359,132h Unchallenged,male,CS,Whole fly
+SRR6434530,36h Ecc15,male,CS,Whole fly
+SRR6434531,132h Ecc15,male,CS,Whole fly
+SRR6434532,132h P. rettgeri live,male,CS,Whole fly
+SRR6434533,132h P. rettgeri live,male,CS,Whole fly
+SRR6434534,132h P. rettgeri live,male,CS,Whole fly
+SRR6434535,12h Ecc15,male,CS,Whole fly
+SRR6434536,12h Ecc15,male,CS,Whole fly
+SRR6434537,36h Ecc15,male,CS,Whole fly
+SRR6434538,12h Ecc15,male,CS,Whole fly
+SRR6434539,36h Ecc15,male,CS,Whole fly
+SRR6434540,132h clean prick,male,CS,Whole fly
+SRR6434541,12h M. luteus,male,CS,Whole fly
+SRR6434542,132h S. marcescens Type,male,CS,Whole fly
+SRR6434543,12h clean prick,male,CS,Whole fly
+SRR6434544,12h clean prick,male,CS,Whole fly
+SRR6434545,12h clean prick,male,CS,Whole fly
+SRR6434546,36h clean prick,male,CS,Whole fly
+SRR6434547,36h clean prick,male,CS,Whole fly
+SRR6434548,36h clean prick,male,CS,Whole fly
+SRR6434549,132h clean prick,male,CS,Whole fly
+SRR6434550,132h clean prick,male,CS,Whole fly
+SRR6434551,12h S. aureus,male,CS,Whole fly
+SRR6434552,12h S. aureus,male,CS,Whole fly
+SRR6434553,36h S. marcescens Type,male,CS,Whole fly
+SRR6434554,12h S. marcescens Type,male,CS,Whole fly
+SRR6434555,36h E. coli,male,CS,Whole fly
+SRR6434556,36h E. coli,male,CS,Whole fly
+SRR6434557,132h E. coli,male,CS,Whole fly
+SRR6434558,36h E. coli,male,CS,Whole fly
+SRR6434559,132h E. coli,male,CS,Whole fly
+SRR6434560,132h E. coli,male,CS,Whole fly
+SRR6434561,12h S. marcescens Type,male,CS,Whole fly
+SRR6434562,12h S. marcescens Type,male,CS,Whole fly
+SRR6434563,132h Ecc15,male,CS,Whole fly
+SRR6434564,132h Ecc15,male,CS,Whole fly
+SRR6434565,36h P. rettgeri live,male,CS,Whole fly
+SRR6434566,12h S. aureus,male,CS,Whole fly
+SRR6434567,36h P. rettgeri live,male,CS,Whole fly
+SRR6434568,36h P. rettgeri live,male,CS,Whole fly
+SRR6434569,12h P. rettgeri live,male,CS,Whole fly
+SRR6434570,12h P. rettgeri live,male,CS,Whole fly
+SRR6434571,132h E. faecalis live,male,CS,Whole fly
+SRR6434572,132h E. faecalis live,male,CS,Whole fly
+SRR6434573,132h E. faecalis live,male,CS,Whole fly
+SRR6434574,12h P. rettgeri live,male,CS,Whole fly
+SRR6434575,36h E. faecalis live,male,CS,Whole fly
+SRR6434576,36h E. faecalis live,male,CS,Whole fly
+SRR6434577,132h S. marcescens Type,male,CS,Whole fly
+SRR6434578,12h E. faecalis live,male,CS,Whole fly
+SRR6434579,36h S. marcescens Type,male,CS,Whole fly
+SRR6434580,36h S. marcescens Type,male,CS,Whole fly
+SRR6434581,12h E. faecalis live,male,CS,Whole fly
+SRR6434582,132h S. marcescens Type,male,CS,Whole fly
+SRR6434583,12h E. faecalis live,male,CS,Whole fly
+SRR6434584,36h E. faecalis live,male,CS,Whole fly
+SRR6434585,12h E. coli,male,CS,Whole fly
+SRR6434586,12h E. coli,male,CS,Whole fly
+SRR6434587,132h M. luteus,male,CS,Whole fly
+SRR6434588,132h M. luteus,male,CS,Whole fly
+SRR6434589,12h E. coli,male,CS,Whole fly
+SRR6434590,132h M. luteus,male,CS,Whole fly
+SRR6434591,12h M. luteus,male,CS,Whole fly
+SRR6434592,12h M. luteus,male,CS,Whole fly
+SRR6434593,36h M. luteus,male,CS,Whole fly
+SRR6434594,36h M. luteus,male,CS,Whole fly
+SRR6434843,12h P. rettgeri heat-killed,male,CS,Whole fly
+SRR6434844,132h E. faecalis heat-killed,male,CS,Whole fly
+SRR6434845,36h E. faecalis heat-killed,male,CS,Whole fly
+SRR6434846,36h E. faecalis heat-killed,male,CS,Whole fly
+SRR6434847,132h E. faecalis heat-killed,male,CS,Whole fly
+SRR6434848,12h E. faecalis heat-killed,male,CS,Whole fly
+SRR6434849,12h E. faecalis heat-killed,male,CS,Whole fly
+SRR6434850,132h E. faecalis heat-killed,male,CS,Whole fly
+SRR6434851,36h E. faecalis heat-killed,male,CS,Whole fly
+SRR6434852,12h E. faecalis heat-killed,male,CS,Whole fly
+SRR6434853,12h P. entomophila,male,CS,Whole fly
+SRR6434854,12h S. marcescens Db11,male,CS,Whole fly
+SRR6434855,12h S. marcescens Db11,male,CS,Whole fly
+SRR6434856,12h P. sneebia,male,CS,Whole fly
+SRR6434857,12h P. sneebia,male,CS,Whole fly
+SRR6434858,12h S. marcescens Db11,male,CS,Whole fly
+SRR6434859,12h P. sneebia,male,CS,Whole fly
+SRR6434860,36h M. luteus,male,CS,Whole fly
+SRR6434861,12h P. entomophila,male,CS,Whole fly
+SRR6434862,12h P. entomophila,male,CS,Whole fly
+SRR6434863,12h P. rettgeri heat-killed,male,CS,Whole fly
+SRR6434864,36h P. rettgeri heat-killed,male,CS,Whole fly
+SRR6434865,36h P. rettgeri heat-killed,male,CS,Whole fly
+SRR6434866,12h P. rettgeri heat-killed,male,CS,Whole fly
+SRR6434867,36h P. rettgeri heat-killed,male,CS,Whole fly
+SRR6434868,132h P. rettgeri heat-killed,male,CS,Whole fly
+SRR6434869,132h P. rettgeri heat-killed,male,CS,Whole fly
+SRR6434870,132h P. rettgeri heat-killed,male,CS,Whole fly

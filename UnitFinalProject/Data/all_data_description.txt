@@ -1,0 +1,17 @@
+file name:amp_relatedness_Dmel.txt
+Description: This file contains the percent identity of the proteins
+to drosophila proteins that was used in the study.
+file name: Dmel_DPC.csv
+Description: Drosophila proteins and their dipeptide composition
+file name: insect_AMP_nonAMP.xlsx
+Description: The main dataset that was used for machine learning
+model. Contains 427 known insect antimicrobial peptide and 459
+non antimicrobial peptide.
+file name:rsem.merged.gene_tpm.tsv
+Description: Expression (TPM count)of drosophila genes in different
+bacterial infections. **TPM=Transcript per million.
+Data from Troha et al., 2018, (https://doi.org/10.1371/journal.ppat.1006847)
+file name:SraRunTable.csv 
+Description: Metadata informations of the samples of the bacterial 
+infection RNA-seq study.
+Data from Troha et al., 2018, (https://doi.org/10.1371/journal.ppat.1006847)
