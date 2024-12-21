@@ -38,11 +38,22 @@ colnames(relatedness) <- c("genes","pident")
 merged_df <- merge(amp_data, relatedness, by.x = "row.names", by.y = "genes", all = TRUE)
 rownames(merged_df) <- merged_df$Row.names
 merged_df$Row.names <- NULL
-library(IDPmisc)
-merged_df <- NaRV.omit(merged_df)
+
+#DAN: For some reason I could not install this package, I I wrote the following lines of replacement code to get it to run
+#library(IDPmisc) 
+badinds<-unique(do.call(c,lapply(FUN=function(x){which(!is.finite(x))},X=merged_df)))
+merged_df<-merged_df[-badinds,]
+#merged_df <- NaRV.omit(merged_df)
+
 amp_data <- merged_df
 rm(merged_df,relatedness)
 amp_data <- as.data.frame(amp_data)
+
+#DAN: The response should be a factor - some methods use that to decide if you are 
+#doing regression or classification
+names(amp_data)
+class(amp_data$AMP_1)
+amp_data$AMP_1<-as.factor(amp_data$AMP_1)
 
 #---------------------------------------------------------------
 # Data Splitting for Training and Testing
